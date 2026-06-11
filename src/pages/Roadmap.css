@@ -1,0 +1,218 @@
+.roadmap-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.roadmap-header h1 {
+  font-size: 2.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Timeline Flow container */
+.roadmap-interactive-flow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  padding: 3rem 2rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 3rem;
+  position: relative;
+  overflow-x: auto;
+}
+
+/* Individual node bubble */
+.roadmap-node {
+  background-color: var(--bg-color);
+  border: 2px solid var(--panel-border);
+  color: var(--text-primary);
+  border-radius: 50%;
+  width: 110px;
+  height: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  font-family: var(--font-sans);
+}
+
+.roadmap-node:hover {
+  transform: translateY(-4px) scale(1.05);
+  border-color: var(--node-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.roadmap-node.active {
+  border-color: var(--node-color);
+  background-color: var(--panel-bg);
+  box-shadow: 0 0 25px rgba(99, 102, 241, 0.2);
+  transform: scale(1.08);
+}
+
+.node-step {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.node-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 0.25rem;
+  padding: 0 0.5rem;
+  color: var(--text-primary);
+}
+
+/* Glowing halo around nodes */
+.node-glow {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.roadmap-node.active .node-glow {
+  border-color: var(--node-color);
+  animation: nodePulse 2s infinite ease-in-out;
+  opacity: 0.7;
+}
+
+@keyframes nodePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+}
+
+/* Connector lines between checkpoints */
+.flow-connector {
+  flex-grow: 1;
+  height: 4px;
+  background-color: var(--panel-border);
+  min-width: 50px;
+  transition: all 0.4s ease;
+}
+
+.flow-connector.active {
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+/* Checklist Info Card Panel */
+.roadmap-detail-panel {
+  background-color: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-md);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-sm);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.roadmap-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--panel-border);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  gap: 1.5rem;
+}
+
+.detail-step-badge {
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.roadmap-detail-header h2 {
+  font-size: 1.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.detail-tagline {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.roadmap-detail-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.roadmap-detail-body h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.detail-description p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.syllabus-checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.syllabus-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+}
+
+.check-bullet {
+  color: #10b981;
+  font-weight: 800;
+}
+
+/* Timeline vertical layout adjustments for small viewports */
+@media (max-width: 768px) {
+  .roadmap-interactive-flow {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2.5rem 1.5rem;
+  }
+  
+  .flow-connector {
+    width: 4px;
+    height: 40px;
+    min-width: auto;
+    margin: -4px 0;
+  }
+  
+  .roadmap-detail-body {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .roadmap-detail-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

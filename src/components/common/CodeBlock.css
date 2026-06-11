@@ -1,0 +1,155 @@
+.code-block-wrapper {
+  background-color: #1e1e2e; /* Slate-dark themed code base */
+  border: 1px solid #313244;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin: 1.5rem 0;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Code Header */
+.code-block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 1.25rem;
+  background-color: #11111b; /* Header darker banner */
+  border-bottom: 1px solid #313244;
+}
+
+.code-block-lang {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #cdd6f4;
+  letter-spacing: 0.05em;
+}
+
+.code-block-copy-btn {
+  background: transparent;
+  border: 1px solid #313244;
+  color: #a6adc8;
+  cursor: pointer;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.code-block-copy-btn:hover {
+  color: #cdd6f4;
+  border-color: #45475a;
+  background-color: #313244;
+}
+
+.code-block-copy-btn.copied {
+  color: #a6e3a1;
+  border-color: #a6e3a1;
+  background-color: rgba(166, 227, 161, 0.1);
+}
+
+.code-block-copy-btn svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Code Content Body */
+.code-block-body {
+  display: flex;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+/* Line Number Gutter */
+.code-block-gutter {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  padding: 1rem 0.75rem;
+  background-color: #181825;
+  border-right: 1px solid #313244;
+  user-select: none;
+  min-width: 40px;
+}
+
+.gutter-num {
+  color: #585b70;
+  font-size: 0.8rem;
+}
+
+/* Pre block formatting */
+.code-block-content {
+  padding: 1rem 1.25rem;
+  margin: 0;
+  overflow-x: auto;
+  flex-grow: 1;
+}
+
+.code-block-content code {
+  background-color: transparent !important;
+  color: #cdd6f4 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-family: inherit;
+  white-space: pre;
+}
+
+/* Token Colors for Custom Syntax Highlighting */
+.token-comment {
+  color: #6c7086;
+  font-style: italic;
+}
+
+.token-keyword {
+  color: #cba6f7; /* Lavender keyword */
+  font-weight: 600;
+}
+
+.token-string {
+  color: #a6e3a1; /* Light green strings */
+}
+
+.token-number {
+  color: #f9e2af; /* Yellow numbers */
+}
+
+.token-function {
+  color: #89b4fa; /* Blue functions */
+}
+
+/* HTML Tag Specific Highlight Spans */
+.token-tag {
+  color: #f38ba8; /* Red elements */
+  font-weight: 600;
+}
+
+.token-attr {
+  color: #fab387; /* Peach attributes */
+}
+
+.token-attr-val {
+  color: #a6e3a1; /* Attributes text */
+}
+
+/* CSS Highlight Spans */
+.token-selector {
+  color: #89b4fa; /* Blue selectors */
+  font-weight: 600;
+}
+
+.token-property {
+  color: #94e2d5; /* Teal properties */
+}
+
+.token-value {
+  color: #fab387; /* Peach values */
+}

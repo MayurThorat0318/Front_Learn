@@ -1,0 +1,156 @@
+.page-spacing {
+  padding: 3rem 1.5rem;
+}
+
+/* Dashboard Header Row */
+.hub-dashboard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+  border-bottom: 1px solid var(--panel-border);
+  padding-bottom: 2rem;
+}
+
+.hub-dashboard-text h1 {
+  font-size: 2.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Progress Stats Card */
+.hub-progress-card {
+  background-color: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  min-width: 320px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.progress-percent-label {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.progress-gauge-track {
+  width: 100%;
+  height: 8px;
+  background-color: var(--bg-color);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  border: 1px solid var(--panel-border);
+}
+
+.progress-gauge-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: var(--radius-full);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reset-progress-btn {
+  background: transparent;
+  border: none;
+  color: #ef4444; /* red reset link */
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: right;
+  padding: 0;
+  align-self: flex-end;
+  transition: opacity 0.2s ease;
+}
+
+.reset-progress-btn:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* Categories Section listing */
+.hub-categories-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.category-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.category-header {
+  border-left: 4px solid var(--primary);
+  padding-left: 1rem;
+}
+
+.category-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.category-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+/* Card lists */
+.lessons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2rem;
+}
+
+.lesson-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.read-time-badge {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* Completed Card Modifiers */
+.card-completed {
+  border-color: rgba(16, 185, 129, 0.3) !important;
+}
+
+.card-completed:hover {
+  border-color: #10b981 !important;
+}
+
+/* Responsive constraints */
+@media (max-width: 820px) {
+  .hub-dashboard {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .hub-progress-card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .lessons-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,91 @@
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useTheme } from '../../context/ThemeContext';
+import './Header.css';
+
+export default function Header() {
+  const { isDarkMode, toggleTheme } = useTheme();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+
+  // Helper to determine if a route is active
+  const isActive = (path) => {
+    if (path === '/' && location.pathname !== '/') return false;
+    return location.pathname.startsWith(path);
+  };
+
+  return (
+    <header className="site-header">
+      <div className="container header-container">
+        {/* Brand Logo */}
+        <Link to="/" className="brand-logo" onClick={() => setMobileMenuOpen(false)}>
+          <span className="logo-icon">⚡</span>
+          <span className="logo-text">Frontend<span className="accent-text">Ref</span></span>
+        </Link>
+
+        {/* Desktop Navigation */}
+        <nav className="desktop-nav">
+          <Link to="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>Home</Link>
+          <Link to="/html" className={`nav-link ${isActive('/html') ? 'active' : ''}`}>HTML</Link>
+          <Link to="/css" className={`nav-link ${isActive('/css') ? 'active' : ''}`}>CSS</Link>
+          <Link to="/blog" className={`nav-link ${isActive('/blog') ? 'active' : ''}`}>Blog</Link>
+        </nav>
+
+        {/* Actions (Theme toggle, Mobile menu button) */}
+        <div className="header-actions">
+          {/* Theme Toggle Button */}
+          <button
+            onClick={toggleTheme}
+            className="theme-toggle"
+            aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
+            title={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
+          >
+            {isDarkMode ? (
+              // Sun Icon for Light mode trigger
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon-sun">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2"></path>
+                <path d="M12 20v2"></path>
+                <path d="m4.93 4.93 1.41 1.41"></path>
+                <path d="m17.66 17.66 1.41 1.41"></path>
+                <path d="M2 12h2"></path>
+                <path d="M20 12h2"></path>
+                <path d="m6.34 17.66-1.41 1.41"></path>
+                <path d="m19.07 4.93-1.41 1.41"></path>
+              </svg>
+            ) : (
+              // Moon Icon for Dark mode trigger
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon-moon">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+              </svg>
+            )}
+          </button>
+
+          {/* Hamburger Menu Toggle (Mobile) */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className={`mobile-menu-btn ${mobileMenuOpen ? 'open' : ''}`}
+            aria-label="Toggle Navigation Menu"
+            aria-expanded={mobileMenuOpen}
+          >
+            <span className="hamburger-line"></span>
+            <span className="hamburger-line"></span>
+            <span className="hamburger-line"></span>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Drawer Overlay */}
+      {mobileMenuOpen && (
+        <div className="mobile-overlay" onClick={() => setMobileMenuOpen(false)}>
+          <nav className="mobile-nav" onClick={(e) => e.stopPropagation()}>
+            <Link to="/" className={`mobile-nav-link ${isActive('/') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>Home</Link>
+            <Link to="/html" className={`mobile-nav-link ${isActive('/html') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>HTML Concepts</Link>
+            <Link to="/css" className={`mobile-nav-link ${isActive('/css') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>CSS Concepts</Link>
+            <Link to="/blog" className={`mobile-nav-link ${isActive('/blog') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>Blog</Link>
+          </nav>
+        </div>
+      )}
+    </header>
+  );
+}

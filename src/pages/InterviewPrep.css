@@ -1,0 +1,175 @@
+.interview-hero {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.interview-hero h1 {
+  font-size: 2.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.prep-filters-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+  background-color: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Grid of Flashcards */
+.flashcards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+}
+
+/* 3D Flip Card Container */
+.flashcard-container {
+  perspective: 1000px;
+  height: 280px;
+  cursor: pointer;
+  outline: none;
+  border-radius: var(--radius-md);
+  transition: transform 0.25s ease;
+  position: relative;
+}
+
+.flashcard-container:hover {
+  transform: translateY(-4px);
+}
+
+.flashcard-container:focus-visible {
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+/* Card inner rotator */
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+/* Rotate inner panel when container has flipped class */
+.flashcard-container.flipped .flashcard-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front & Back basic alignments */
+.flashcard-front, .flashcard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--panel-border);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-md);
+}
+
+/* Front Styling (The Question) */
+.flashcard-front {
+  background-color: var(--panel-bg);
+  color: var(--text-primary);
+}
+
+.card-label-q {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary);
+  letter-spacing: 0.05em;
+}
+
+.card-text-q {
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text-primary);
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+/* Back Styling (The Answer) */
+.flashcard-back {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  transform: rotateY(180deg);
+  border-color: transparent;
+}
+
+.card-label-a {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.05em;
+}
+
+.card-text-a {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: white;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  overflow-y: auto;
+  margin: 1rem 0;
+  padding-right: 0.25rem;
+}
+
+/* Scrollbar tweaks for back side answers overflow */
+.card-text-a::-webkit-scrollbar {
+  width: 4px;
+}
+
+.card-text-a::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.card-text-a::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-full);
+}
+
+/* Flip Prompt icon descriptor */
+.flip-prompt-indicator {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.flashcard-back .flip-prompt-indicator {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Empty prep state panel */
+.no-prep-results {
+  text-align: center;
+  padding: 4rem 1.5rem;
+  background-color: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}

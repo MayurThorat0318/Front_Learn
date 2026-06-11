@@ -1,0 +1,9 @@
+/* CSS Reference Page — Additional Overrides */
+/* Imports the shared reference page styles */
+@import './HtmlReference.css';
+
+/* CSS-specific badge color override */
+.css-badge {
+  background: hsl(190, 90%, 92%);
+  color: hsl(190, 90%, 35%);
+}

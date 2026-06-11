@@ -1,0 +1,416 @@
+.lesson-page-wrapper {
+  display: flex;
+  min-height: calc(100vh - var(--header-height));
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .lesson-page-wrapper {
+    flex-direction: column;
+  }
+}
+
+/* 1. Sidebar Syllabuses layout */
+.lesson-sidebar {
+  width: 280px;
+  background-color: var(--panel-bg);
+  border-right: 1px solid var(--panel-border);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex-shrink: 0;
+  position: sticky;
+  top: var(--header-height);
+  height: calc(100vh - var(--header-height));
+  overflow-y: auto;
+}
+
+@media (max-width: 900px) {
+  .lesson-sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--panel-border);
+  }
+}
+
+.back-link {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.back-link:hover {
+  color: var(--primary);
+}
+
+.sidebar-cat-title {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  font-weight: 800;
+  margin-top: 0.5rem;
+}
+
+.sidebar-links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar-item-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.sidebar-item-link:hover {
+  background-color: var(--bg-color);
+  color: var(--primary);
+}
+
+.sidebar-item-link.active {
+  background-color: var(--primary-light);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Completion dot indicators inside sidebar */
+.dot-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.sidebar-done .dot-indicator {
+  background-color: #10b981; /* green dot */
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+.sidebar-done .sidebar-item-title {
+  text-decoration: none;
+}
+
+/* 2. Main content area */
+.lesson-main {
+  flex-grow: 1;
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 880px;
+  overflow-x: hidden;
+}
+
+@media (max-width: 600px) {
+  .lesson-main {
+    padding: 2rem 1.5rem;
+  }
+}
+
+.lesson-header h1 {
+  font-size: 2.25rem;
+  margin: 0.5rem 0 1.25rem 0;
+}
+
+.lesson-meta-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.lesson-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary);
+  background-color: var(--primary-light);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+}
+
+.lesson-header-readtime {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Mark complete button styling */
+.completion-action-bar {
+  display: flex;
+  margin-top: 0.5rem;
+}
+
+.btn-complete {
+  border-color: #10b981 !important;
+  color: #10b981 !important;
+  background-color: rgba(16, 185, 129, 0.05) !important;
+}
+
+.btn-complete:hover {
+  background-color: rgba(16, 185, 129, 0.1) !important;
+}
+
+.check-svg {
+  stroke: #10b981;
+}
+
+/* Study Tab controls */
+.tab-navigation {
+  display: flex;
+  border-bottom: 2px solid var(--panel-border);
+  gap: 1.5rem;
+  overflow-x: auto;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0.75rem 0.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  margin-bottom: -2px;
+}
+
+.tab-btn:hover {
+  color: var(--primary);
+}
+
+.tab-btn.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+.tab-pane-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.lesson-intro-text {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.section-h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  color: var(--text-primary);
+}
+
+/* Syntax prebox */
+.syntax-text-box {
+  background-color: var(--code-bg);
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--panel-border);
+  overflow-x: auto;
+}
+
+.syntax-text-box code {
+  background-color: transparent !important;
+  padding: 0 !important;
+  color: var(--text-primary);
+}
+
+.output-explanation-panel {
+  background-color: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  font-size: 0.95rem;
+}
+
+/* Mistakes panel formatting */
+.mistakes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mistake-card {
+  background-color: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.mistake-row {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--panel-border);
+}
+
+.bad-row {
+  background-color: rgba(239, 68, 68, 0.03);
+}
+
+.good-row {
+  background-color: rgba(16, 185, 129, 0.03);
+}
+
+.mistake-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  align-self: flex-start;
+}
+
+.bad-badge {
+  color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.good-badge {
+  color: #10b981;
+  background-color: rgba(16, 185, 129, 0.1);
+}
+
+.mistake-row pre {
+  margin: 0;
+  overflow-x: auto;
+}
+
+.mistake-row code {
+  background: transparent !important;
+  padding: 0 !important;
+  color: var(--text-primary);
+}
+
+.mistake-why-box {
+  padding: 1.25rem;
+  background-color: var(--bg-color);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+/* Interview details questions accordions */
+.interview-q-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.qa-details {
+  background-color: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.qa-details[open] {
+  box-shadow: var(--shadow-sm);
+}
+
+.qa-summary {
+  padding: 1.25rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  user-select: none;
+  color: var(--text-primary);
+  list-style: none;
+  position: relative;
+  padding-right: 2.5rem;
+}
+
+.qa-summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Rotate caret marker icon using CSS pseudo-selectors */
+.qa-summary::after {
+  content: '▼';
+  font-size: 0.75rem;
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  transition: transform 0.2s ease;
+}
+
+.qa-details[open] .qa-summary::after {
+  transform: translateY(-50%) rotate(180deg);
+  color: var(--primary);
+}
+
+.qa-answer {
+  padding: 0 1.25rem 1.25rem 1.25rem;
+  border-top: 1px solid var(--panel-border);
+  background-color: var(--bg-color);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  animation: slideDown 0.25s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Console details */
+.js-sandbox-preview {
+  background-color: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+}
+
+.console-prompt-box {
+  margin-top: 1.5rem;
+  background-color: var(--bg-color);
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--panel-border);
+}
+
+/* Next / Prev Nav Footer */
+.lesson-footer-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3rem;
+  border-top: 1px solid var(--panel-border);
+  padding-top: 1.5rem;
+}
+
+.error-panel {
+  padding: 4rem 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
