@@ -28,6 +28,9 @@ export default function Header() {
           <Link to="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>Home</Link>
           <Link to="/html" className={`nav-link ${isActive('/html') ? 'active' : ''}`}>HTML</Link>
           <Link to="/css" className={`nav-link ${isActive('/css') ? 'active' : ''}`}>CSS</Link>
+          <Link to="/roadmap" className={`nav-link ${isActive('/roadmap') ? 'active' : ''}`}>Roadmap</Link>
+          <Link to="/learn" className={`nav-link ${isActive('/learn') ? 'active' : ''}`}>Learn</Link>
+          <Link to="/prep" className={`nav-link ${isActive('/prep') ? 'active' : ''}`}>Interview Prep</Link>
           <Link to="/blog" className={`nav-link ${isActive('/blog') ? 'active' : ''}`}>Blog</Link>
         </nav>
 
@@ -82,6 +85,9 @@ export default function Header() {
             <Link to="/" className={`mobile-nav-link ${isActive('/') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>Home</Link>
             <Link to="/html" className={`mobile-nav-link ${isActive('/html') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>HTML Concepts</Link>
             <Link to="/css" className={`mobile-nav-link ${isActive('/css') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>CSS Concepts</Link>
+            <Link to="/roadmap" className={`mobile-nav-link ${isActive('/roadmap') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>Roadmap</Link>
+            <Link to="/learn" className={`mobile-nav-link ${isActive('/learn') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>Learning Hub</Link>
+            <Link to="/prep" className={`mobile-nav-link ${isActive('/prep') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>Interview Prep</Link>
             <Link to="/blog" className={`mobile-nav-link ${isActive('/blog') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>Blog</Link>
           </nav>
         </div>
