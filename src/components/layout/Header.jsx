@@ -19,8 +19,25 @@ export default function Header() {
       <div className="container header-container">
         {/* Brand Logo */}
         <Link to="/" className="brand-logo" onClick={() => setMobileMenuOpen(false)}>
-          <span className="logo-icon">⚡</span>
-          <span className="logo-text">Frontend<span className="accent-text">Ref</span></span>
+          <span className="logo-icon">
+            <svg width="30" height="30" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="32" height="32" rx="8" fill="url(#logoGrad)"/>
+              {/* Book pages */}
+              <rect x="7" y="9" width="8" height="14" rx="1" fill="white" opacity="0.9"/>
+              <rect x="17" y="9" width="8" height="14" rx="1" fill="white" opacity="0.6"/>
+              {/* Spine */}
+              <rect x="15" y="8" width="2" height="16" rx="1" fill="white"/>
+              {/* Code bracket on front */}
+              <text x="8.5" y="19" fontSize="7" fontWeight="bold" fill="url(#logoGrad)" fontFamily="monospace">&lt;/&gt;</text>
+              <defs>
+                <linearGradient id="logoGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stopColor="#6366f1"/>
+                  <stop offset="100%" stopColor="#8b5cf6"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </span>
+          <span className="logo-text">Front<span className="accent-text">Learn</span></span>
         </Link>
 
         {/* Desktop Navigation */}

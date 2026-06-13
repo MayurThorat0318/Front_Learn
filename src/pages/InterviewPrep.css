@@ -1,12 +1,58 @@
 .interview-hero {
   text-align: center;
-  margin-bottom: 3.5rem;
+  margin-bottom: 2rem;
 }
 
 .interview-hero h1 {
   font-size: 2.25rem;
   margin-bottom: 0.5rem;
 }
+
+/* Soft Skills Callout Banner */
+.soft-skills-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(239, 68, 68, 0.08));
+  border: 1.5px solid rgba(245, 158, 11, 0.4);
+  border-radius: var(--radius-md);
+  padding: 1.1rem 1.4rem;
+  margin: 1.25rem auto 0;
+  max-width: 680px;
+  text-align: left;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.soft-skills-banner strong {
+  color: var(--text-primary);
+}
+
+.soft-skills-banner-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+/* Soft Skills pill special style */
+.pill-btn[data-cat="Soft Skills"],
+.pill-btn.active[data-cat="Soft Skills"] {
+  border-color: #f59e0b;
+}
+
+.pill-btn[data-cat="Soft Skills"].active {
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+  color: white;
+  border-color: transparent;
+}
+
+/* Soft Skills card special color */
+.card-label-q[data-cat="Soft Skills"] {
+  color: #f59e0b;
+}
+
+
 
 .prep-filters-bar {
   display: flex;

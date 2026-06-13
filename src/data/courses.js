@@ -219,6 +219,87 @@ list.addEventListener('click', (event) => {
             a: 'preventDefault() stops default browser actions (like page resets on forms). stopPropagation() stops the event from climbing up the DOM bubbling tree.'
           }
         ]
+      },
+      {
+        id: 'js-promises-async',
+        title: 'Promises & Async/Await',
+        tag: 'Intermediate',
+        readTime: '10 mins',
+        summary: 'Tame asynchronous JavaScript with Promises, chaining, async/await, and error handling.',
+        explanation: 'JavaScript is single-threaded but non-blocking. Promises represent future values. async/await is syntactic sugar over Promises that makes async code look synchronous and easier to reason about.',
+        syntax: `const result = await fetch('/api/data');\nconst data = await result.json();`,
+        example: `// Async/Await with error handling
+async function loadUserProfile(userId) {
+  try {
+    const response = await fetch(\`/api/users/\${userId}\`);
+    if (!response.ok) throw new Error('User not found');
+    const user = await response.json();
+    return user;
+  } catch (error) {
+    console.error('Failed to load profile:', error.message);
+    return null;
+  }
+}
+
+// Parallel fetching for speed
+const [user, posts] = await Promise.all([
+  fetch('/api/user').then(r => r.json()),
+  fetch('/api/posts').then(r => r.json())
+]);`,
+        outputExplanation: 'Promise.all() runs multiple async operations simultaneously rather than sequentially, cutting total wait time significantly.',
+        mistakes: [
+          {
+            bad: `const data = fetch('/api'); data.json() (fetch returns a Promise, not data)`,
+            good: `const response = await fetch('/api'); const data = await response.json();`,
+            why: 'fetch() returns a Promise. You must await it to get the Response object, then await .json() to parse the body.'
+          }
+        ],
+        interview: [
+          {
+            q: 'What is the difference between Promise.all() and Promise.allSettled()?',
+            a: 'Promise.all() rejects immediately if any promise fails. Promise.allSettled() waits for all promises to settle and returns all results regardless of success or failure.'
+          }
+        ]
+      },
+      {
+        id: 'js-closures',
+        title: 'Closures & Scope',
+        tag: 'Advanced',
+        readTime: '9 mins',
+        summary: 'Understand lexical scope, closure formation, and practical patterns like module encapsulation.',
+        explanation: 'A closure is created when a function references variables from its outer lexical environment. The inner function retains access to those variables even after the outer function has finished executing.',
+        syntax: `function outer(x) {\n  return function inner(y) {\n    return x + y; // 'x' is captured in closure\n  };\n}`,
+        example: `// Module Pattern using Closures
+function createCounter(initialValue = 0) {
+  let count = initialValue; // Private state
+
+  return {
+    increment() { count++; },
+    decrement() { count--; },
+    getCount() { return count; },
+    reset() { count = initialValue; }
+  };
+}
+
+const counter = createCounter(10);
+counter.increment();
+counter.increment();
+counter.getCount(); // 12
+// 'count' is not directly accessible from outside`,
+        outputExplanation: 'The inner functions close over the count variable, keeping it private while exposing controlled accessor methods — a fundamental pattern for data encapsulation.',
+        mistakes: [
+          {
+            bad: `for (var i = 0; i < 3; i++) { setTimeout(() => console.log(i), 100); } // Logs 3, 3, 3`,
+            good: `for (let i = 0; i < 3; i++) { setTimeout(() => console.log(i), 100); } // Logs 0, 1, 2`,
+            why: 'var is function-scoped so all closures share the same i. let creates a new block-scoped binding per iteration.'
+          }
+        ],
+        interview: [
+          {
+            q: 'What is a practical use case for closures?',
+            a: 'Closures enable data privacy (module pattern), memoization caches, partial function application, and event handler factories that remember configuration state.'
+          }
+        ]
       }
     ]
   },
@@ -266,6 +347,106 @@ function Card({ theme, onToggle }) {
           {
             q: 'Why should you never mutate state variables directly?',
             a: 'React renders pages by comparing object references (re-rendering if they differ). Mutating states directly breaks reference tracking, causing React to miss the change.'
+          }
+        ]
+      },
+      {
+        id: 'react-hooks-useeffect',
+        title: 'useEffect & Side Effects',
+        tag: 'Intermediate',
+        readTime: '10 mins',
+        summary: 'Manage data fetching, subscriptions, timers, and DOM side effects with the useEffect hook.',
+        explanation: 'useEffect runs after React renders your component. It is the go-to tool for side effects — anything that reaches outside React: API calls, event listener registration, timers, and direct DOM manipulation.',
+        syntax: `useEffect(() => {\n  // effect code\n  return () => { /* cleanup */ };\n}, [dependencies]);`,
+        example: `import { useState, useEffect } from 'react';
+
+function UserProfile({ userId }) {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false; // Prevent stale updates
+    setLoading(true);
+
+    fetch(\`/api/users/\${userId}\`)
+      .then(r => r.json())
+      .then(data => {
+        if (!cancelled) {
+          setUser(data);
+          setLoading(false);
+        }
+      });
+
+    return () => { cancelled = true; }; // Cleanup on unmount
+  }, [userId]); // Re-run when userId changes
+
+  if (loading) return <p>Loading...</p>;
+  return <h2>{user?.name}</h2>;
+}`,
+        outputExplanation: 'The cleanup function prevents setting state on unmounted components by using a cancelled flag — a critical pattern to avoid memory leak warnings.',
+        mistakes: [
+          {
+            bad: `useEffect(async () => { const data = await fetch(...); }) (async directly in useEffect)`,
+            good: `useEffect(() => { async function load() { ... } load(); }, []);`,
+            why: 'useEffect cannot return a Promise. The async function must be defined inside and called, or defined outside.'
+          }
+        ],
+        interview: [
+          {
+            q: 'What happens if you pass no dependency array vs an empty array to useEffect?',
+            a: 'No array: runs after every render. Empty array []: runs once after mount only. [dep]: runs after mount and whenever dep changes.'
+          }
+        ]
+      },
+      {
+        id: 'react-context',
+        title: 'Context API & Global State',
+        tag: 'Advanced',
+        readTime: '9 mins',
+        summary: 'Share data across deeply nested components without prop drilling using the Context API.',
+        explanation: 'The Context API creates a shared data store accessible anywhere in the component tree. A Provider wraps the tree and supplies a value. Any descendant uses useContext() to consume it — no more passing props through every layer.',
+        syntax: `const MyContext = createContext(defaultValue);\n// Provide: <MyContext.Provider value={...}>\n// Consume: const value = useContext(MyContext);`,
+        example: `import { createContext, useContext, useState } from 'react';
+
+// 1. Create context
+const ThemeContext = createContext('light');
+
+// 2. Custom hook for clean consumption
+function useTheme() {
+  return useContext(ThemeContext);
+}
+
+// 3. Provider wraps the app
+export function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState('dark');
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
+
+// 4. Deep child consumes directly — no prop drilling!
+function DeepButton() {
+  const { theme, setTheme } = useTheme();
+  return (
+    <button onClick={() => setTheme(t => t === 'dark' ? 'light' : 'dark')}>
+      Current: {theme}
+    </button>
+  );
+}`,
+        outputExplanation: 'DeepButton can be nested 10 levels deep and still access theme without any parent passing it down. The custom hook makes consumption clean and reusable.',
+        mistakes: [
+          {
+            bad: `Using Context for every piece of state (causes too many re-renders)`,
+            good: `Use Context for low-frequency global state (theme, auth, locale)`,
+            why: 'Every Context value change re-renders all consumers. For high-frequency state (like form inputs), use local state or specialized stores like Zustand.'
+          }
+        ],
+        interview: [
+          {
+            q: 'When would you choose Redux or Zustand over Context API?',
+            a: 'Context lacks built-in performance optimizations (like selectors) and devtools. Zustand/Redux are better for complex state with frequent updates, derived state, or when you need time-travel debugging.'
           }
         ]
       }

@@ -34,8 +34,22 @@ export default function Footer() {
         {/* Brand and Description Info */}
         <div className="footer-info">
           <Link to="/" className="footer-logo">
-            <span className="logo-icon">⚡</span>
-            <span className="logo-text">Frontend<span className="accent-text">Ref</span></span>
+            <span className="logo-icon">
+              <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect width="32" height="32" rx="8" fill="url(#footerLogoGrad)"/>
+                <rect x="7" y="9" width="8" height="14" rx="1" fill="white" opacity="0.9"/>
+                <rect x="17" y="9" width="8" height="14" rx="1" fill="white" opacity="0.6"/>
+                <rect x="15" y="8" width="2" height="16" rx="1" fill="white"/>
+                <text x="8.5" y="19" fontSize="7" fontWeight="bold" fill="url(#footerLogoGrad)" fontFamily="monospace">&lt;/&gt;</text>
+                <defs>
+                  <linearGradient id="footerLogoGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stopColor="#6366f1"/>
+                    <stop offset="100%" stopColor="#8b5cf6"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </span>
+            <span className="logo-text">Front<span className="accent-text">Learn</span></span>
           </Link>
           <p className="footer-desc">
             A quick-reference site for HTML and CSS concepts, with brief explanations and live interactive demos for each topic.
@@ -93,7 +107,7 @@ export default function Footer() {
 
       <div className="footer-bottom">
         <div className="container flex-between footer-bottom-container">
-          <p className="copyright-text">&copy; {new Date().getFullYear()} FrontendRef. Built for reference.</p>
+          <p className="copyright-text">&copy; {new Date().getFullYear()} FrontLearn. Built for learning.</p>
           <p className="design-credit">Designed with passion 💻</p>
         </div>
       </div>

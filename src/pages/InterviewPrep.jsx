@@ -536,6 +536,97 @@ export default function InterviewPrep() {
       category: 'React',
       question: 'What is state batching in React and why does it matter?',
       answer: 'State batching means React groups multiple setState calls within the same event handler or lifecycle into a single re-render cycle for performance. In React 18, automatic batching was extended to async operations (setTimeout, Promises). This prevents unnecessary intermediate renders when multiple pieces of state change together.'
+    },
+    // ─── Soft Skills (Non-Technical) ────────────────────────────────────────
+    {
+      id: 89,
+      category: 'Soft Skills',
+      question: 'How should you introduce yourself at the start of a technical interview?',
+      answer: 'Keep it structured and concise — 60 to 90 seconds. Use the "Present–Past–Future" format: start with your current role and skills, briefly mention relevant past experience, and connect to why you are excited about this specific role. Avoid reading your resume. Show genuine enthusiasm and end with a sentence that transitions back to the interviewer.'
+    },
+    {
+      id: 90,
+      category: 'Soft Skills',
+      question: 'What is the STAR method and when do you use it in interviews?',
+      answer: 'STAR stands for Situation (set the context), Task (your specific responsibility), Action (what YOU did — use "I", not "we"), and Result (measurable outcome). Use it for ALL behavioral questions that start with "Tell me about a time when..." or "Give me an example of...". It gives your answer a clear, compelling narrative structure that interviewers follow easily.'
+    },
+    {
+      id: 91,
+      category: 'Soft Skills',
+      question: 'How do you handle a technical question you do not know the answer to?',
+      answer: 'NEVER guess silently or stay quiet. The best approach: (1) Acknowledge honestly — "I haven\'t worked with that specific API, but here\'s how I would approach it...". (2) Think out loud — demonstrate your reasoning process. (3) Connect to related knowledge you do have. Interviewers value problem-solving mindset and intellectual honesty far more than memorized answers.'
+    },
+    {
+      id: 92,
+      category: 'Soft Skills',
+      question: 'What body language mistakes hurt candidates most in interviews?',
+      answer: 'The most damaging: (1) No eye contact — look at the interviewer, not the screen corner. (2) Crossed arms — signals defensiveness. (3) Slouching — projects low confidence. (4) Filler overload ("um", "like", "you know") — slows down your perceived intelligence. (5) Checking the phone or watch. (6) Flat, monotone delivery — vary your pace and energy when explaining concepts you\'re excited about.'
+    },
+    {
+      id: 93,
+      category: 'Soft Skills',
+      question: 'How should you handle silence or pauses during problem-solving?',
+      answer: 'Never sit in complete silence — that creates awkward tension. Instead, narrate your thought process in real time: "Let me think through this... I\'m considering using a hash map here because lookup would be O(1)...". This demonstrates how you think under pressure, shows communication skills, and often invites helpful hints from the interviewer. A 10-second silent pause is acceptable; 30+ seconds is not.'
+    },
+    {
+      id: 94,
+      category: 'Soft Skills',
+      question: 'What is the "culture fit" evaluation and how do you prepare for it?',
+      answer: 'Culture fit assesses whether your working style, values, and communication approach align with the team. To prepare: (1) Research the company values on their website and LinkedIn. (2) Tailor examples that reflect those values — if they value ownership, emphasize independent decisions you made. (3) Ask thoughtful questions about the team. (4) Match your energy to the team\'s communication style. Culture fit is evaluated throughout the entire interview, not just in one specific question.'
+    },
+    {
+      id: 95,
+      category: 'Soft Skills',
+      question: 'How do you answer "What is your greatest weakness?" effectively?',
+      answer: 'Avoid clichés like "I work too hard" — interviewers hear these constantly. Instead: (1) Name a real, genuine weakness. (2) Show self-awareness about WHY it is a weakness. (3) Describe concrete steps you have taken to improve it. (4) Show measurable progress. Example: "I used to struggle with perfectionism in code reviews, which slowed delivery. I now set time-boxed review sessions and focus on critical issues first, which improved my team\'s PR cycle time by 40%."'
+    },
+    {
+      id: 96,
+      category: 'Soft Skills',
+      question: 'How should you ask clarifying questions during a technical problem?',
+      answer: 'Asking clarifying questions is a POSITIVE signal — it shows senior-level thinking. Before coding: ask about input constraints, edge cases, expected output format, and performance requirements. Frame them as: "Before I start, I want to make sure I understand the requirements — can you confirm whether the input array will always be sorted?" This prevents wasted effort and shows you think like a real engineer, not just someone who jumps to coding.'
+    },
+    {
+      id: 97,
+      category: 'Soft Skills',
+      question: 'What questions should you ask the interviewer at the end?',
+      answer: 'Always prepare 3-4 thoughtful questions. Strong options: (1) "What does the onboarding process look like for this role?" (2) "What are the biggest technical challenges the team is currently facing?" (3) "How do you measure success for someone in this position in the first 90 days?" (4) "What do you personally enjoy most about working here?" Avoid: salary questions (too early), questions answered on their website (shows lack of research), or negative-sounding questions about job stability.'
+    },
+    {
+      id: 98,
+      category: 'Soft Skills',
+      question: 'How do you recover if you realize mid-answer that you are wrong?',
+      answer: 'Correct yourself calmly and confidently — do not panic. Say something like: "Actually, let me reconsider that — I think I misspoke. The correct behavior is..." Self-correction demonstrates intellectual honesty and strong metacognition, which are highly valued traits. Do NOT double down on a wrong answer out of ego. Candidates who can identify and correct their own errors are considered significantly more hire-worthy than those who bluff.'
+    },
+    {
+      id: 99,
+      category: 'Soft Skills',
+      question: 'How do you manage nervousness and anxiety before and during an interview?',
+      answer: 'Before: (1) Do a mock interview out loud — not in your head — at least twice. (2) Review your strongest projects and wins the day before. (3) Get 8 hours of sleep and exercise on interview day. During: (1) Take one slow breath before answering tough questions. (2) Reframe nerves as excitement — the physiology is identical. (3) Remember the interviewer wants you to succeed — they are not adversaries. A little nervousness actually sharpens thinking; aim for calm alertness, not zero anxiety.'
+    },
+    {
+      id: 100,
+      category: 'Soft Skills',
+      question: 'How do you effectively communicate your thought process when coding?',
+      answer: 'Think of yourself as a rubber-duck debugger narrating for the interviewer. Communicate: (1) Your initial approach and why you chose it. (2) Any tradeoffs you considered. (3) Any edge cases you are watching for. (4) Your current implementation step. Use phrases like "I chose this approach because...", "A potential issue here is...", "This is O(n) time complexity because...". Silence during coding is the number-one mistake candidates make.'
+    },
+    {
+      id: 101,
+      category: 'Soft Skills',
+      question: 'What tone and energy level is appropriate for a frontend interview?',
+      answer: 'Aim for enthusiastic professionalism. Be genuinely excited about the technology — passion for frontend engineering is contagious and memorable. Avoid: being too casual (using slang), too stiff (robotic one-word answers), or negative (complaining about past employers). Match the interviewer\'s energy roughly — if they are relaxed and casual, loosen up slightly. Your enthusiasm for the craft of building great UIs is a competitive differentiator, especially for frontend roles.'
+    },
+    {
+      id: 102,
+      category: 'Soft Skills',
+      question: 'How do you handle a behavioral question about a conflict with a teammate?',
+      answer: 'Use STAR and follow these rules: (1) NEVER blame the other person — frame it as a collaborative challenge. (2) Focus on the actions YOU took to resolve it. (3) Emphasize what you learned. (4) End with a positive outcome. Example frame: "We had different approaches to component architecture. I scheduled a pair-programming session, we discussed tradeoffs together, and ultimately combined our approaches — which actually produced a better solution. I learned the value of early alignment on architectural decisions."'
+    },
+    {
+      id: 103,
+      category: 'Soft Skills',
+      question: 'What does dressing appropriately for an interview communicate?',
+      answer: 'Appearance communicates attention to detail and respect for the opportunity — qualities directly correlated with professional judgment. For frontend roles at startups: smart casual (clean, fitted clothing) is usually safe. For enterprises or financial companies: business casual minimum. When in doubt, dress one level above what you think the team wears. For video interviews: ensure your background is clean and neutral, lighting is on your face (not behind you), and your camera is at eye level. First impressions form in under 7 seconds.'
     }
   ];
 
@@ -547,7 +638,8 @@ export default function InterviewPrep() {
   // Track flipped state of cards by ID
   const [flippedCards, setFlippedCards] = useState({});
 
-  const categories = ['All', 'HTML', 'CSS', 'JavaScript', 'React'];
+  const categories = ['All', 'Soft Skills', 'HTML', 'CSS', 'JavaScript', 'React'];
+
 
   // Toggle card flip
   const handleCardFlip = (cardId) => {
@@ -577,7 +669,17 @@ export default function InterviewPrep() {
       {/* Header section */}
       <section className="interview-hero">
         <h1>Interview Preparation Hub</h1>
-        <p>Test your core frontend knowledge. Type in search queries, toggle categories, and click flashcards to reveal answers.</p>
+        <p>Master both technical knowledge and the soft skills that get you hired. Flip cards to reveal answers — filter by category or search for any topic.</p>
+
+        {/* Soft Skills Callout Banner */}
+        <div className="soft-skills-banner">
+          <div className="soft-skills-banner-icon">🤝</div>
+          <div>
+            <strong>Did you know?</strong> Technical skills get you the interview — soft skills get you the offer.
+            Select the <strong>Soft Skills</strong> tab to learn what interviewers evaluate beyond your code:
+            communication, body language, the STAR method, handling failures, and more.
+          </div>
+        </div>
       </section>
 
       {/* Search & Filters Controls */}
@@ -599,10 +701,11 @@ export default function InterviewPrep() {
             <button
               key={cat}
               type="button"
+              data-cat={cat}
               className={`pill-btn ${selectedCategory === cat ? 'active' : ''}`}
               onClick={() => setSelectedCategory(cat)}
             >
-              {cat}
+              {cat === 'Soft Skills' ? '🤝 ' : ''}{cat}
             </button>
           ))}
         </div>
